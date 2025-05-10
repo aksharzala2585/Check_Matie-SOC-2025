@@ -1,4 +1,4 @@
-import subprocess
+import subprocess,sys
 
 def run_test_case(input_file, output_file, program_file):
     with open(input_file, 'r') as f:
@@ -7,7 +7,7 @@ def run_test_case(input_file, output_file, program_file):
     # Run the program as a subprocess
     # print("---------------------------------------")
     # print("Started Running")
-    result = subprocess.run(['/usr/bin/python3', program_file], input=input_data, text=True, capture_output=True)
+    result = subprocess.run([program_file], input=input_data, text=True, capture_output=True)
     # print("Finished Runnign")
     actual_output = result.stdout.strip()
     expected_output = open(output_file, 'r').read().strip()
@@ -23,5 +23,5 @@ def run_all_test_cases(program_file):
             print(f'Test case {i}: FAILED')
 
 if __name__ == "__main__":
-    program_file = 'Greedy_Or_Not.py'  
+    program_file = 'sol.exe'  
     run_all_test_cases(program_file)
