@@ -8,6 +8,7 @@ Build your own competitive chess engine in 8 weeks! This project combines **clas
 - Board representation & move generation
 - Minimax, Alpha-Beta pruning, heuristics
 - Zobrist hashing & transposition tables
+- Efficiently Updatable Neural Network (NNUE)
 - RL (Q-learning, self-play, policy tuning)
 
 ## 📅 Commitment
