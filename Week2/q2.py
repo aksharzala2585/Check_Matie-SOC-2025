@@ -1,7 +1,8 @@
 import copy  # use it for deepcopy if needed
 import math
 import logging
-
+import sys
+sys.setrecursionlimit(1000)
 logging.basicConfig(format='%(levelname)s - %(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S',
                     level=logging.INFO)
 
@@ -11,7 +12,8 @@ logging.basicConfig(format='%(levelname)s - %(asctime)s - %(message)s', datefmt=
 board_positions_val_dict = {}
 # Global variable to store the visited histories in the process of alpha beta pruning.
 visited_histories_list = []
-
+strategy_dict_1 = {}
+strategy_dict_2 = {}
 
 class History:
     def __init__(self, num_boards=2, history=None):
@@ -159,22 +161,40 @@ class History:
         return boards_str
 
     def is_win(self):
-        # Feel free to implement this in anyway if needed
-        pass
+        return all(state == 0 for state in self.active_board_stats)
 
     def get_valid_actions(self):
         # Feel free to implement this in anyway if needed
-        pass
+        valid = []
+        for i in range(self.num_boards):
+            if self.active_board_stats[i] == 1:
+                board = self.boards[i]
+                for j, pos in enumerate(board):
+                    if pos == '0':
+                        valid.append(i * 9 + j)
+        return valid
 
     def is_terminal_history(self):
         # Feel free to implement this in anyway if needed
-        pass
+        return self.is_win()
 
     def get_value_given_terminal_history(self):
         # Feel free to implement this in anyway if needed
-        pass
+        return (self.current_player%2)*2 -1
+def sort_valid_actions(actions):
+    # Define preference scores for positions within a 3x3 board
+    position_priority = {
+        4: 0,              # Center
+        0: 1, 2: 1, 6: 1, 8: 1,  # Corners
+        1: 2, 3: 2, 5: 2, 7: 2   # Edges
+    }
 
+    def action_score(action):
+        board_pos = action % 9
+        return position_priority.get(board_pos, 3)  # Default to low priority if invalid
 
+    return sorted(actions, key=action_score)
+vals ={}
 def alpha_beta_pruning(history_obj, alpha, beta, max_player_flag):
     """
         Calculate the maxmin value given a History object using alpha beta pruning. Use the specific move order to
@@ -189,10 +209,39 @@ def alpha_beta_pruning(history_obj, alpha, beta, max_player_flag):
     # These two already given lines track the visited histories.
     global visited_histories_list
     visited_histories_list.append(history_obj.history)
-    # TODO implement
-    return -2
-    # TODO implement
-
+    h = history_obj
+    # print(len(visited_histories_list))
+    s = h.get_boards_str()
+    if(s in vals):
+        return vals[s]
+    if h.is_terminal_history():
+        return h.get_value_given_terminal_history()
+    if (max_player_flag):
+        m_val = -1000
+        for actions in sort_valid_actions(h.get_valid_actions()):
+            h.history.append(actions)
+            ob = History(h.num_boards,h.history)
+            val = alpha_beta_pruning(ob, alpha,beta, not max_player_flag)
+            h.history.pop()
+            m_val = max(m_val,val)
+            alpha = max(val,alpha)
+            if(beta<=alpha):
+                break
+        vals[s]  = m_val
+        return m_val
+    else:
+        m_val =1000
+        for actions in sort_valid_actions(h.get_valid_actions()):
+            h.history.append(actions)
+            ob = History(h.num_boards,h.history)
+            val = alpha_beta_pruning(ob, alpha,beta, not max_player_flag)
+            h.history.pop()
+            m_val = min(val, m_val)
+            beta = min(val,beta)
+            if(alpha>=beta):
+                break
+        vals[s] = m_val
+        return m_val 
 
 def maxmin(history_obj, max_player_flag):
     """
@@ -206,10 +255,33 @@ def maxmin(history_obj, max_player_flag):
     # self.boards and value represents the maxmin value. Use the get_boards_str function in History class to get
     # the key corresponding to self.boards.
     global board_positions_val_dict
-    # TODO implement
-    return -2
-    # TODO implement
-
+    h = history_obj
+    s = h.get_boards_str()
+    # print(len(board_positions_val_dict))
+    if(s in board_positions_val_dict):
+        return board_positions_val_dict[s]
+    if(h.is_terminal_history()):
+        return h.get_value_given_terminal_history()
+    if (max_player_flag):
+        m_val = -2
+        for actions in sort_valid_actions(h.get_valid_actions()):
+            h.history.append(actions)
+            ob = History(h.num_boards,h.history)
+            val = maxmin(ob, not max_player_flag)
+            m_val = max(m_val,val)
+            h.history.pop()
+        board_positions_val_dict[s]  = m_val
+        return m_val
+    else:
+        m_val =2
+        for actions in sort_valid_actions(h.get_valid_actions()):
+            h.history.append(actions)
+            ob = History(h.num_boards, h.history)
+            val = maxmin(ob,not max_player_flag)
+            m_val = min(val, m_val)
+            h.history.pop()
+        board_positions_val_dict[s] = m_val
+        return m_val 
 
 def solve_alpha_beta_pruning(history_obj, alpha, beta, max_player_flag):
     global visited_histories_list
@@ -223,6 +295,6 @@ if __name__ == "__main__":
     value, visited_histories = solve_alpha_beta_pruning(History(history=[], num_boards=2), -math.inf, math.inf, True)
     logging.info("maxmin value {}".format(value))
     logging.info("Number of histories visited {}".format(len(visited_histories)))
-    logging.info("maxmin memory")
     logging.info("maxmin value {}".format(maxmin(History(history=[], num_boards=2), True)))
+    logging.info("Number of histories visited "  + str(len(board_positions_val_dict)))
     logging.info("end")

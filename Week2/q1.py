@@ -2,7 +2,8 @@ import json
 import copy  # use it for deepcopy if needed
 import math  # for math.inf
 import logging
-
+import sys
+sys.setrecursionlimit(300000)
 logging.basicConfig(format='%(levelname)s - %(asctime)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S',
                     level=logging.INFO)
 
@@ -11,6 +12,7 @@ logging.basicConfig(format='%(levelname)s - %(asctime)s - %(message)s', datefmt=
 strategy_dict_x = {}
 strategy_dict_o = {}
 
+visited = {}  # Memoization to avoid repeated recursion calls in backward_induction
 
 class History:
     def __init__(self, history=None):
@@ -73,42 +75,121 @@ class History:
                 board[self.history[i]] = 'o'
         return board
 
+    def is_sorted_subset(self, a, b):
+        i = j = 0
+        while i < len(a) and j < len(b):
+            if a[i] == b[j]:
+                i += 1
+                j += 1
+            elif a[i] > b[j]:
+                j += 1
+            else:
+                return False
+        return i == len(a)
+
     def is_win(self):
         # check if the board position is a win for either players
         # Feel free to implement this in anyway if needed
-        pass
+        cor = [[0,1,2],[3,4,5],[6,7,8],[0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+        x =[]
+        o =[]
+        b = self.board
+        for key in range(9):
+            if(b[key]=='o'):
+                o.append(key)
+            elif(b[key]=='x'):
+                x.append(key)
+        win = False
+        for k in cor:
+            win = self.is_sorted_subset(k,o)
+            if(win):
+                return win
 
+        for k in cor:
+            win = self.is_sorted_subset(k,x)
+            if(win):
+                return win
+        return win
+                
     def is_draw(self):
-        # check if the board position is a draw
-        # Feel free to implement this in anyway if needed
-        pass
+        if((not self.is_win()) and len(self.history)==9):
+            return True
+        return False
 
     def get_valid_actions(self):
         # get the empty squares from the board
         # Feel free to implement this in anyway if needed
-        pass
+        valid = []
+        for i in range(9):
+            if(self.board[i]=='0'):
+                valid.append(i)
+        return valid
 
     def is_terminal_history(self):
         # check if the history is a terminal history
         # Feel free to implement this in anyway if needed
-        pass
+        if(self.is_win() or self.is_draw()):
+            return True
+        return False
 
     def get_utility_given_terminal_history(self):
         # Feel free to implement this in anyway if needed
+        if(self.is_draw()):
+            return 0
+        elif(self.is_win()):
+            if(len(self.history)%2==1):
+                return 1
+            else:
+                return -1
         pass
 
     def update_history(self, action):
         # In case you need to create a deepcopy and update the history obj to get the next history object.
         # Feel free to implement this in anyway if needed
-        pass
+        self.history.append(action)
+        a = History(self.history.copy())
+        self.history.pop()
+        return a
 
+vals = {}
+has_val = {}
+
+def eval(history_obj):
+    h_str = str(history_obj.history)
+    if h_str in has_val:
+        return vals[h_str]
+    if history_obj.is_terminal_history():
+        v = history_obj.get_utility_given_terminal_history()
+        has_val[h_str] = True
+        vals[h_str] = v
+    elif history_obj.player == 'x':
+        value = -float('inf')
+        for action in history_obj.get_valid_actions():
+            ob = history_obj.update_history(action)
+            value = max(value, eval(ob))
+        has_val[h_str] = True
+        vals[h_str] = value
+    else:
+        value = float('inf')
+        for action in history_obj.get_valid_actions():
+            ob = history_obj.update_history(action)
+            value = min(value, eval(ob))
+        has_val[h_str] = True
+        vals[h_str] = value
+    return vals[h_str]
+
+def convert_history(h):
+    s = ""
+    for k in h:
+        s += str(k)
+    return s
 
 def backward_induction(history_obj):
     """
     :param history_obj: Histroy class object
     :return: best achievable utility (float) for th current history_obj
     """
-    global strategy_dict_x, strategy_dict_o
+    global strategy_dict_x, strategy_dict_o, visited
     # TODO implement
     # (1) Implement backward induction for tictactoe
     # (2) Update the global variables strategy_dict_x or strategy_dict_o which are a mapping from histories to
@@ -122,9 +203,54 @@ def backward_induction(history_obj):
     # actions. But since tictactoe is a PIEFG, there always exists an optimal deterministic strategy (SPNE). So your
     # policy will be something like this {"0": 1, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0} where
     # "0" was the one of the best actions for the current player/history.
-    return -2
-    # TODO implement
 
+    h = history_obj
+    u = convert_history(h.history)
+
+    if u in visited:
+        return
+    visited[u] = True
+
+    if h.is_terminal_history():
+        return eval(history_obj) 
+
+    # Recursive call for all children states
+    for action in h.get_valid_actions():
+        ob = h.update_history(action)
+        backward_induction(ob)
+
+    mini = float('inf')
+    maxi = -float('inf')
+    mini_action = -1
+    maxi_action = -1
+
+    for action in h.get_valid_actions():
+        ob = h.update_history(action)
+        a = eval(ob)
+        if a < mini:
+            mini = a
+            mini_action = action
+        if a > maxi:
+            maxi = a
+            maxi_action = action
+
+    s = convert_history(h.history)
+    if h.player == 'x':
+        d = {}
+        for i in range(9):
+            if i != maxi_action:
+                d[f'{i}'] = 0.0
+            else:
+                d[f'{i}'] = 1.0
+        strategy_dict_x[s] = d
+    else:
+        d = {}
+        for i in range(9):
+            if i != mini_action:
+                d[f'{i}'] = 0.0
+            else:
+                d[f'{i}'] = 1.0
+        strategy_dict_o[s] = d
 
 def solve_tictactoe():
     backward_induction(History())
@@ -133,7 +259,6 @@ def solve_tictactoe():
     with open('./policy_o.json', 'w') as f:
         json.dump(strategy_dict_o, f)
     return strategy_dict_x, strategy_dict_o
-
 
 if __name__ == "__main__":
     logging.info("Start")
