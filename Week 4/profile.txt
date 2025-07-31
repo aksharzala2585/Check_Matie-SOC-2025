@@ -1,0 +1,464 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 19.91      2.69     2.69 45397855     0.00     0.00  main
+ 14.43      4.64     1.95        8   243.75   244.84  eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int)
+  9.33      5.90     1.26                             etext
+  7.99      6.98     1.08 51369528     0.00     0.00  void chess::movegen::legalmoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int)
+  7.92      8.05     1.07 28629706     0.00     0.00  void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard)
+  5.92      8.85     0.80                             frame_dummy
+  5.18      9.55     0.70                             evaluateKingSafety(chess::Board const&)
+  4.59     10.17     0.62 14195998     0.00     0.00  evaluateMaterial(chess::Board const&)
+  3.55     10.65     0.48                             std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, chess::Move>, false>*, unsigned long)
+  3.11     11.07     0.42 30020046     0.00     0.00  void chess::Board::makeMove<false>(chess::Move)
+  3.03     11.48     0.41 84636494     0.00     0.00  void chess::movegen::legalmoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int)
+  2.89     11.87     0.39 15824024     0.00     0.00  evaluateMobility(chess::Board const&)
+  2.22     12.17     0.30 14195998     0.00     0.00  _GLOBAL__sub_I__Z16evaluateMaterialRKN5chess5BoardE
+  1.70     12.40     0.23 374126347     0.00     0.00  chess::Board::makeNullMove()
+  1.18     12.56     0.16                             chess::Board::isAttacked(chess::Square, chess::Color) const
+  1.04     12.70     0.14                             _init
+  0.81     12.81     0.11 45761535     0.00     0.00  bool chess::Board::setFenInternal<false>(std::basic_string_view<char, std::char_traits<char> >)
+  0.74     12.91     0.10                             evaluatePosition(chess::Board const&)
+  0.59     12.99     0.08 15900073     0.00     0.00  chess::Board::unmakeMove(chess::Move)
+  0.52     13.06     0.07                             _dl_relocate_static_pie
+  0.44     13.12     0.06 14195999     0.00     0.00  chess::Board::isInsufficientMaterial() const
+  0.37     13.17     0.05                             bool chess::Board::setFenInternal<true>(std::basic_string_view<char, std::char_traits<char> >)
+  0.37     13.22     0.05                             __do_global_dtors_aux
+  0.30     13.26     0.04 17131829     0.00     0.00  std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&)
+  0.30     13.30     0.04                             std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&)
+  0.30     13.34     0.04                             __gmon_start__
+  0.22     13.37     0.03 16506531     0.00     0.00  chess::Board::zobrist() const
+  0.22     13.40     0.03                             std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)0>(chess::Board const&, chess::Square)
+  0.22     13.43     0.03                             std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()
+  0.22     13.46     0.03                             deregister_tm_clones
+  0.15     13.48     0.02  3619988     0.00     0.00  chess::Board::kingSq(chess::Color) const
+  0.07     13.49     0.01 14195998     0.00     0.00  piece_value(chess::Piece const&)
+  0.07     13.50     0.01                             chess::Board::setFen(std::basic_string_view<char, std::char_traits<char> >)
+  0.07     13.51     0.01                             chess::attacks::initSliders(chess::Square, chess::attacks::Magic*, unsigned long, std::function<chess::Bitboard (chess::Square, chess::Bitboard)> const&)
+  0.00     13.51     0.00 17369540     0.00     0.00  _fini
+  0.00     13.51     0.00  5604456     0.00     0.00  chess::PieceType::PieceType(std::basic_string_view<char, std::char_traits<char> >)
+  0.00     13.51     0.00   208726     0.00     0.00  chess::uci::uciToMove(chess::Board const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00     13.51     0.00   107904     0.00     0.00  chess::Board::placePiece(chess::Piece, chess::Square)
+  0.00     13.51     0.00     5312     0.00     0.00  chess::Board::removePiece(chess::Piece, chess::Square)
+  0.00     13.51     0.00      128     0.00     0.00  chess::movegen::init_squares_between()
+  0.00     13.51     0.00        4     0.00     0.00  std::enable_if<std::__or_<std::__or_<std::is_same<std::remove_cv<int>::type, signed char>, std::is_same<std::remove_cv<int>::type, short>, std::is_same<std::remove_cv<int>::type, int>, std::is_same<std::remove_cv<int>::type, long>, std::is_same<std::remove_cv<int>::type, long long>, std::is_same<std::remove_cv<int>::type, __int128> >, std::__or_<std::is_same<std::remove_cv<int>::type, unsigned char>, std::is_same<std::remove_cv<int>::type, unsigned short>, std::is_same<std::remove_cv<int>::type, unsigned int>, std::is_same<std::remove_cv<int>::type, unsigned long>, std::is_same<std::remove_cv<int>::type, unsigned long long>, std::is_same<std::remove_cv<int>::type, unsigned __int128> >, std::is_same<char, std::remove_cv<int>::type> >::value, std::from_chars_result>::type std::from_chars<int>(char const*, char const*, int&, int)
+  0.00     13.51     0.00        2     0.00     0.00  chess::movegen::generateEPMove(chess::Board const&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Square, chess::Color)
+  0.00     13.51     0.00        2     0.00     0.00  chess::Bitboard chess::movegen::generateCastleMoves<(chess::Color::underlying)0>(chess::Board const&, chess::Square, chess::Bitboard, chess::Bitboard)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.07% of 13.51 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     51.9    0.10    6.92                 evaluatePosition(chess::Board const&) [1]
+                0.39    6.22 15823737/15824024     evaluateMobility(chess::Board const&) [2]
+                0.22    0.00 15823737/30020046     void chess::Board::makeMove<false>(chess::Move) [12]
+                0.08    0.00 15823737/15900073     chess::Board::unmakeMove(chess::Move) [20]
+-----------------------------------------------
+                             14195998             evaluateMobility(chess::Board const&) [2]
+                0.00    0.00     287/15824024     chess::Bitboard chess::attacks::sliderAttacks<false>(chess::Square, chess::Bitboard) [40]
+                0.39    6.22 15823737/15824024     evaluatePosition(chess::Board const&) [1]
+[2]     49.0    0.39    6.22 15824024+14195998 evaluateMobility(chess::Board const&) [2]
+                2.52    1.84 42587994/45397855     main [3]
+                0.62    0.00 14195998/14195998     evaluateMaterial(chess::Board const&) [10]
+                0.53    0.07 14195998/28629706     void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+                0.30    0.00 14195998/14195998     _GLOBAL__sub_I__Z16evaluateMaterialRKN5chess5BoardE [14]
+                0.20    0.00 14195998/30020046     void chess::Board::makeMove<false>(chess::Move) [12]
+                0.06    0.00 14195998/14195999     chess::Board::isInsufficientMaterial() const [22]
+                0.00    0.04 15785718/17369540     _fini [26]
+                0.04    0.00 15663891/17131829     std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) [27]
+                0.01    0.00 14195998/14195998     piece_value(chess::Piece const&) [35]
+                             14195998             evaluateMobility(chess::Board const&) [2]
+-----------------------------------------------
+                0.00    0.00      16/45397855     std::enable_if<std::__or_<std::__or_<std::is_same<std::remove_cv<int>::type, signed char>, std::is_same<std::remove_cv<int>::type, short>, std::is_same<std::remove_cv<int>::type, int>, std::is_same<std::remove_cv<int>::type, long>, std::is_same<std::remove_cv<int>::type, long long>, std::is_same<std::remove_cv<int>::type, __int128> >, std::__or_<std::is_same<std::remove_cv<int>::type, unsigned char>, std::is_same<std::remove_cv<int>::type, unsigned short>, std::is_same<std::remove_cv<int>::type, unsigned int>, std::is_same<std::remove_cv<int>::type, unsigned long>, std::is_same<std::remove_cv<int>::type, unsigned long long>, std::is_same<std::remove_cv<int>::type, unsigned __int128> >, std::is_same<char, std::remove_cv<int>::type> >::value, std::from_chars_result>::type std::from_chars<int>(char const*, char const*, int&, int) [43]
+                0.00    0.00     620/45397855     chess::Board::unmakeMove(chess::Move) [20]
+                0.00    0.00     620/45397855     std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable() [30]
+                0.00    0.00    5932/45397855     etext [4]
+                0.03    0.02  463672/45397855     bool chess::movegen::isEpSquareValid<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [23]
+                0.14    0.10 2339001/45397855     std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [15]
+                2.52    1.84 42587994/45397855     evaluateMobility(chess::Board const&) [2]
+[3]     34.4    2.69    1.96 45397855         main [3]
+                1.95    0.01       8/8           eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int) [5]
+                0.00    0.00       8/28629706     void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+                0.00    0.00      24/30020046     void chess::Board::makeMove<false>(chess::Move) [12]
+                0.00    0.00      18/17369540     _fini [26]
+                0.00    0.00       1/84636494     void chess::movegen::legalmoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [13]
+                0.00    0.00       1/14195999     chess::Board::isInsufficientMaterial() const [22]
+                0.00    0.00       8/208726      chess::uci::uciToMove(chess::Board const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [48]
+                0.00    0.00       2/2           chess::movegen::generateEPMove(chess::Board const&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Square, chess::Color) [52]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]     26.2    1.26    2.29                 etext [4]
+                1.08    0.49 51369528/51369528     void chess::movegen::legalmoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [6]
+                0.54    0.07 14317805/28629706     void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+                0.08    0.00 134349249/374126347     chess::Board::makeNullMove() [16]
+                0.03    0.00 15785735/16506531     chess::Board::zobrist() const [32]
+                0.00    0.00 1467930/17131829     std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) [27]
+                0.00    0.00    5932/45397855     main [3]
+                0.00    0.00    5932/15900073     chess::Board::unmakeMove(chess::Move) [20]
+                0.00    0.00      16/17369540     _fini [26]
+-----------------------------------------------
+                1.95    0.01       8/8           main [3]
+[5]     14.5    1.95    0.01       8         eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int) [5]
+                0.00    0.00  115895/28629706     void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+                0.00    0.00 1583788/17369540     _fini [26]
+                0.00    0.00     287/30020046     void chess::Board::makeMove<false>(chess::Move) [12]
+                0.00    0.00       8/17131829     std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) [27]
+-----------------------------------------------
+                1.08    0.49 51369528/51369528     etext [4]
+[6]     11.6    1.08    0.49 51369528         void chess::movegen::legalmoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [6]
+                0.41    0.00 84636493/84636494     void chess::movegen::legalmoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [13]
+                0.07    0.00 116758092/374126347     chess::Board::makeNullMove() [16]
+-----------------------------------------------
+                0.00    0.00       8/28629706     main [3]
+                0.00    0.00  115895/28629706     eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int) [5]
+                0.53    0.07 14195998/28629706     evaluateMobility(chess::Board const&) [2]
+                0.54    0.07 14317805/28629706     etext [4]
+[7]      9.0    1.07    0.14 28629706         void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+                0.07    0.00 115480868/374126347     chess::Board::makeNullMove() [16]
+                0.07    0.00 28629706/45761535     bool chess::Board::setFenInternal<false>(std::basic_string_view<char, std::char_traits<char> >) [19]
+                0.00    0.00  207864/208726      chess::uci::uciToMove(chess::Board const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [48]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      5.9    0.80    0.00                 frame_dummy [8]
+-----------------------------------------------
+                                                 <spontaneous>
+[9]      5.2    0.70    0.00                 evaluateKingSafety(chess::Board const&) [9]
+-----------------------------------------------
+                0.62    0.00 14195998/14195998     evaluateMobility(chess::Board const&) [2]
+[10]     4.6    0.62    0.00 14195998         evaluateMaterial(chess::Board const&) [10]
+-----------------------------------------------
+                                                 <spontaneous>
+[11]     3.6    0.48    0.00                 std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, chess::Move>, false>*, unsigned long) [11]
+-----------------------------------------------
+                0.00    0.00      24/30020046     main [3]
+                0.00    0.00     287/30020046     eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int) [5]
+                0.20    0.00 14195998/30020046     evaluateMobility(chess::Board const&) [2]
+                0.22    0.00 15823737/30020046     evaluatePosition(chess::Board const&) [1]
+[12]     3.1    0.42    0.00 30020046         void chess::Board::makeMove<false>(chess::Move) [12]
+-----------------------------------------------
+                0.00    0.00       1/84636494     main [3]
+                0.41    0.00 84636493/84636494     void chess::movegen::legalmoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [6]
+[13]     3.1    0.41    0.00 84636494         void chess::movegen::legalmoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [13]
+                0.00    0.00 5317628/374126347     chess::Board::makeNullMove() [16]
+                0.00    0.00       2/2           chess::Bitboard chess::movegen::generateCastleMoves<(chess::Color::underlying)0>(chess::Board const&, chess::Square, chess::Bitboard, chess::Bitboard) [53]
+-----------------------------------------------
+                0.30    0.00 14195998/14195998     evaluateMobility(chess::Board const&) [2]
+[14]     2.2    0.30    0.00 14195998         _GLOBAL__sub_I__Z16evaluateMaterialRKN5chess5BoardE [14]
+-----------------------------------------------
+                                                 <spontaneous>
+[15]     2.1    0.03    0.25                 std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [15]
+                0.14    0.10 2339001/45397855     main [3]
+                0.01    0.00 1809993/3619988     chess::Board::kingSq(chess::Color) const [33]
+                0.00    0.00 5304156/5604456     chess::PieceType::PieceType(std::basic_string_view<char, std::char_traits<char> >) [47]
+-----------------------------------------------
+                0.00    0.00     208/374126347     void chess::movegen::generatePawnMoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [42]
+                0.00    0.00    2237/374126347     bool chess::Board::setFenInternal<false>(std::basic_string_view<char, std::char_traits<char> >) [19]
+                0.00    0.00   66667/374126347     bool chess::movegen::isEpSquareValid<(chess::Color::underlying)1>(chess::Board const&, chess::Square) [39]
+                0.00    0.00 1009992/374126347     chess::Bitboard chess::movegen::seenSquares<(chess::Color::underlying)0>(chess::Board const&, chess::Bitboard) [38]
+                0.00    0.00 1141406/374126347     chess::Bitboard chess::movegen::generateCastleMoves<(chess::Color::underlying)1>(chess::Board const&, chess::Square, chess::Bitboard, chess::Bitboard) [37]
+                0.00    0.00 5317628/374126347     void chess::movegen::legalmoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [13]
+                0.07    0.00 115480868/374126347     void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+                0.07    0.00 116758092/374126347     void chess::movegen::legalmoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [6]
+                0.08    0.00 134349249/374126347     etext [4]
+[16]     1.7    0.23    0.00 374126347         chess::Board::makeNullMove() [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[17]     1.2    0.16    0.00                 chess::Board::isAttacked(chess::Square, chess::Color) const [17]
+-----------------------------------------------
+                                                 <spontaneous>
+[18]     1.0    0.14    0.00                 _init [18]
+-----------------------------------------------
+                0.04    0.00 17131829/45761535     _fini [26]
+                0.07    0.00 28629706/45761535     void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+[19]     0.8    0.11    0.00 45761535         bool chess::Board::setFenInternal<false>(std::basic_string_view<char, std::char_traits<char> >) [19]
+                0.00    0.00  570642/16506531     chess::Board::zobrist() const [32]
+                0.00    0.00    2237/374126347     chess::Board::makeNullMove() [16]
+-----------------------------------------------
+                               69469             chess::Board::unmakeMove(chess::Move) [20]
+                0.00    0.00       2/15900073     void chess::movegen::generatePawnMoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [42]
+                0.00    0.00     287/15900073     chess::Bitboard chess::attacks::sliderAttacks<false>(chess::Square, chess::Bitboard) [40]
+                0.00    0.00     591/15900073     std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)1>(chess::Board const&, chess::Square) [41]
+                0.00    0.00     620/15900073     chess::attacks::initSliders(chess::Square, chess::attacks::Magic*, unsigned long, std::function<chess::Bitboard (chess::Square, chess::Bitboard)> const&) [34]
+                0.00    0.00    5932/15900073     etext [4]
+                0.00    0.00   68904/15900073     bool chess::movegen::isEpSquareValid<(chess::Color::underlying)1>(chess::Board const&, chess::Square) [39]
+                0.08    0.00 15823737/15900073     evaluatePosition(chess::Board const&) [1]
+[20]     0.6    0.08    0.00 15900073+69469   chess::Board::unmakeMove(chess::Move) [20]
+                0.00    0.00     620/45397855     main [3]
+                               69469             chess::Board::unmakeMove(chess::Move) [20]
+-----------------------------------------------
+                                                 <spontaneous>
+[21]     0.5    0.07    0.00                 _dl_relocate_static_pie [21]
+-----------------------------------------------
+                0.00    0.00       1/14195999     main [3]
+                0.06    0.00 14195998/14195999     evaluateMobility(chess::Board const&) [2]
+[22]     0.4    0.06    0.00 14195999         chess::Board::isInsufficientMaterial() const [22]
+-----------------------------------------------
+                                                 <spontaneous>
+[23]     0.4    0.00    0.06                 bool chess::movegen::isEpSquareValid<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [23]
+                0.03    0.02  463672/45397855     main [3]
+                0.01    0.00 1809993/3619988     chess::Board::kingSq(chess::Color) const [33]
+                0.00    0.00  150150/16506531     chess::Board::zobrist() const [32]
+                0.00    0.00  300300/5604456     chess::PieceType::PieceType(std::basic_string_view<char, std::char_traits<char> >) [47]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     0.4    0.05    0.00                 bool chess::Board::setFenInternal<true>(std::basic_string_view<char, std::char_traits<char> >) [24]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     0.4    0.05    0.00                 __do_global_dtors_aux [25]
+-----------------------------------------------
+                0.00    0.00      16/17369540     etext [4]
+                0.00    0.00      18/17369540     main [3]
+                0.00    0.00 1583788/17369540     eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int) [5]
+                0.00    0.04 15785718/17369540     evaluateMobility(chess::Board const&) [2]
+[26]     0.3    0.00    0.04 17369540         _fini [26]
+                0.04    0.00 17131829/45761535     bool chess::Board::setFenInternal<false>(std::basic_string_view<char, std::char_traits<char> >) [19]
+-----------------------------------------------
+                0.00    0.00       8/17131829     eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int) [5]
+                0.00    0.00 1467930/17131829     etext [4]
+                0.04    0.00 15663891/17131829     evaluateMobility(chess::Board const&) [2]
+[27]     0.3    0.04    0.00 17131829         std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) [27]
+                0.00    0.00     854/208726      chess::uci::uciToMove(chess::Board const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [48]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     0.3    0.04    0.00                 std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&) [28]
+-----------------------------------------------
+                                                 <spontaneous>
+[29]     0.3    0.04    0.00                 __gmon_start__ [29]
+-----------------------------------------------
+                                                 <spontaneous>
+[30]     0.2    0.03    0.00                 std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable() [30]
+                0.00    0.00     620/45397855     main [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[31]     0.2    0.03    0.00                 deregister_tm_clones [31]
+-----------------------------------------------
+                0.00    0.00       4/16506531     void chess::movegen::generatePawnMoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [42]
+                0.00    0.00  150150/16506531     bool chess::movegen::isEpSquareValid<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [23]
+                0.00    0.00  570642/16506531     bool chess::Board::setFenInternal<false>(std::basic_string_view<char, std::char_traits<char> >) [19]
+                0.03    0.00 15785735/16506531     etext [4]
+[32]     0.2    0.03    0.00 16506531         chess::Board::zobrist() const [32]
+-----------------------------------------------
+                0.00    0.00       2/3619988     void chess::movegen::generatePawnMoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [42]
+                0.01    0.00 1809993/3619988     std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [15]
+                0.01    0.00 1809993/3619988     bool chess::movegen::isEpSquareValid<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [23]
+[33]     0.1    0.02    0.00 3619988         chess::Board::kingSq(chess::Color) const [33]
+-----------------------------------------------
+                                                 <spontaneous>
+[34]     0.1    0.01    0.00                 chess::attacks::initSliders(chess::Square, chess::attacks::Magic*, unsigned long, std::function<chess::Bitboard (chess::Square, chess::Bitboard)> const&) [34]
+                0.00    0.00     620/15900073     chess::Board::unmakeMove(chess::Move) [20]
+-----------------------------------------------
+                0.01    0.00 14195998/14195998     evaluateMobility(chess::Board const&) [2]
+[35]     0.1    0.01    0.00 14195998         piece_value(chess::Piece const&) [35]
+-----------------------------------------------
+                                                 <spontaneous>
+[36]     0.1    0.01    0.00                 chess::Board::setFen(std::basic_string_view<char, std::char_traits<char> >) [36]
+-----------------------------------------------
+                                                 <spontaneous>
+[37]     0.0    0.00    0.00                 chess::Bitboard chess::movegen::generateCastleMoves<(chess::Color::underlying)1>(chess::Board const&, chess::Square, chess::Bitboard, chess::Bitboard) [37]
+                0.00    0.00 1141406/374126347     chess::Board::makeNullMove() [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[38]     0.0    0.00    0.00                 chess::Bitboard chess::movegen::seenSquares<(chess::Color::underlying)0>(chess::Board const&, chess::Bitboard) [38]
+                0.00    0.00 1009992/374126347     chess::Board::makeNullMove() [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[39]     0.0    0.00    0.00                 bool chess::movegen::isEpSquareValid<(chess::Color::underlying)1>(chess::Board const&, chess::Square) [39]
+                0.00    0.00   68904/15900073     chess::Board::unmakeMove(chess::Move) [20]
+                0.00    0.00   66667/374126347     chess::Board::makeNullMove() [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[40]     0.0    0.00    0.00                 chess::Bitboard chess::attacks::sliderAttacks<false>(chess::Square, chess::Bitboard) [40]
+                0.00    0.00     287/15824024     evaluateMobility(chess::Board const&) [2]
+                0.00    0.00     287/15900073     chess::Board::unmakeMove(chess::Move) [20]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.0    0.00    0.00                 std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)1>(chess::Board const&, chess::Square) [41]
+                0.00    0.00     591/15900073     chess::Board::unmakeMove(chess::Move) [20]
+-----------------------------------------------
+                                                 <spontaneous>
+[42]     0.0    0.00    0.00                 void chess::movegen::generatePawnMoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [42]
+                0.00    0.00       4/4           std::enable_if<std::__or_<std::__or_<std::is_same<std::remove_cv<int>::type, signed char>, std::is_same<std::remove_cv<int>::type, short>, std::is_same<std::remove_cv<int>::type, int>, std::is_same<std::remove_cv<int>::type, long>, std::is_same<std::remove_cv<int>::type, long long>, std::is_same<std::remove_cv<int>::type, __int128> >, std::__or_<std::is_same<std::remove_cv<int>::type, unsigned char>, std::is_same<std::remove_cv<int>::type, unsigned short>, std::is_same<std::remove_cv<int>::type, unsigned int>, std::is_same<std::remove_cv<int>::type, unsigned long>, std::is_same<std::remove_cv<int>::type, unsigned long long>, std::is_same<std::remove_cv<int>::type, unsigned __int128> >, std::is_same<char, std::remove_cv<int>::type> >::value, std::from_chars_result>::type std::from_chars<int>(char const*, char const*, int&, int) [43]
+                0.00    0.00     208/374126347     chess::Board::makeNullMove() [16]
+                0.00    0.00       2/3619988     chess::Board::kingSq(chess::Color) const [33]
+                0.00    0.00       2/15900073     chess::Board::unmakeMove(chess::Move) [20]
+                0.00    0.00       4/16506531     chess::Board::zobrist() const [32]
+-----------------------------------------------
+                0.00    0.00       4/4           void chess::movegen::generatePawnMoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [42]
+[43]     0.0    0.00    0.00       4         std::enable_if<std::__or_<std::__or_<std::is_same<std::remove_cv<int>::type, signed char>, std::is_same<std::remove_cv<int>::type, short>, std::is_same<std::remove_cv<int>::type, int>, std::is_same<std::remove_cv<int>::type, long>, std::is_same<std::remove_cv<int>::type, long long>, std::is_same<std::remove_cv<int>::type, __int128> >, std::__or_<std::is_same<std::remove_cv<int>::type, unsigned char>, std::is_same<std::remove_cv<int>::type, unsigned short>, std::is_same<std::remove_cv<int>::type, unsigned int>, std::is_same<std::remove_cv<int>::type, unsigned long>, std::is_same<std::remove_cv<int>::type, unsigned long long>, std::is_same<std::remove_cv<int>::type, unsigned __int128> >, std::is_same<char, std::remove_cv<int>::type> >::value, std::from_chars_result>::type std::from_chars<int>(char const*, char const*, int&, int) [43]
+                0.00    0.00      16/45397855     main [3]
+-----------------------------------------------
+                0.00    0.00  300300/5604456     bool chess::movegen::isEpSquareValid<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [23]
+                0.00    0.00 5304156/5604456     std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [15]
+[47]     0.0    0.00    0.00 5604456         chess::PieceType::PieceType(std::basic_string_view<char, std::char_traits<char> >) [47]
+-----------------------------------------------
+                0.00    0.00       8/208726      main [3]
+                0.00    0.00     854/208726      std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&) [27]
+                0.00    0.00  207864/208726      void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [7]
+[48]     0.0    0.00    0.00  208726         chess::uci::uciToMove(chess::Board const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [48]
+-----------------------------------------------
+                              102464             chess::Board::placePiece(chess::Piece, chess::Square) [49]
+                0.00    0.00     128/107904      chess::movegen::generateEPMove(chess::Board const&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Square, chess::Color) [52]
+                0.00    0.00  107776/107904      chess::movegen::init_squares_between() [51]
+[49]     0.0    0.00    0.00  107904+102464  chess::Board::placePiece(chess::Piece, chess::Square) [49]
+                0.00    0.00    5312/5312        chess::Board::removePiece(chess::Piece, chess::Square) [50]
+                              102464             chess::Board::placePiece(chess::Piece, chess::Square) [49]
+-----------------------------------------------
+                0.00    0.00    5312/5312        chess::Board::placePiece(chess::Piece, chess::Square) [49]
+[50]     0.0    0.00    0.00    5312         chess::Board::removePiece(chess::Piece, chess::Square) [50]
+-----------------------------------------------
+                0.00    0.00     128/128         chess::movegen::generateEPMove(chess::Board const&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Square, chess::Color) [52]
+[51]     0.0    0.00    0.00     128         chess::movegen::init_squares_between() [51]
+                0.00    0.00  107776/107904      chess::Board::placePiece(chess::Piece, chess::Square) [49]
+-----------------------------------------------
+                0.00    0.00       2/2           main [3]
+[52]     0.0    0.00    0.00       2         chess::movegen::generateEPMove(chess::Board const&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Square, chess::Color) [52]
+                0.00    0.00     128/128         chess::movegen::init_squares_between() [51]
+                0.00    0.00     128/107904      chess::Board::placePiece(chess::Piece, chess::Square) [49]
+-----------------------------------------------
+                0.00    0.00       2/2           void chess::movegen::legalmoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [13]
+[53]     0.0    0.00    0.00       2         chess::Bitboard chess::movegen::generateCastleMoves<(chess::Color::underlying)0>(chess::Board const&, chess::Square, chess::Bitboard, chess::Bitboard) [53]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2024 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [14] _GLOBAL__sub_I__Z16evaluateMaterialRKN5chess5BoardE [12] void chess::Board::makeMove<false>(chess::Move) [28] std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_rehash(unsigned long, unsigned long const&)
+  [35] piece_value(chess::Piece const&) [34] chess::attacks::initSliders(chess::Square, chess::attacks::Magic*, unsigned long, std::function<chess::Bitboard (chess::Square, chess::Bitboard)> const&) [30] std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::~_Hashtable()
+  [10] evaluateMaterial(chess::Board const&) [13] void chess::movegen::legalmoves<(chess::Color::underlying)0, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [27] std::__detail::_Map_base<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true>, true>::operator[](unsigned long const&)
+   [2] evaluateMobility(chess::Board const&) [6] void chess::movegen::legalmoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Movelist&, chess::Board const&, int) [43] std::enable_if<std::__or_<std::__or_<std::is_same<std::remove_cv<int>::type, signed char>, std::is_same<std::remove_cv<int>::type, short>, std::is_same<std::remove_cv<int>::type, int>, std::is_same<std::remove_cv<int>::type, long>, std::is_same<std::remove_cv<int>::type, long long>, std::is_same<std::remove_cv<int>::type, __int128> >, std::__or_<std::is_same<std::remove_cv<int>::type, unsigned char>, std::is_same<std::remove_cv<int>::type, unsigned short>, std::is_same<std::remove_cv<int>::type, unsigned int>, std::is_same<std::remove_cv<int>::type, unsigned long>, std::is_same<std::remove_cv<int>::type, unsigned long long>, std::is_same<std::remove_cv<int>::type, unsigned __int128> >, std::is_same<char, std::remove_cv<int>::type> >::value, std::from_chars_result>::type std::from_chars<int>(char const*, char const*, int&, int)
+   [1] evaluatePosition(chess::Board const&) [52] chess::movegen::generateEPMove(chess::Board const&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Square, chess::Color) [25] __do_global_dtors_aux
+   [9] evaluateKingSafety(chess::Board const&) [7] void chess::movegen::generatePawnMoves<(chess::Color::underlying)1, (chess::movegen::MoveGenType)0>(chess::Board const&, chess::Movelist&, chess::Bitboard, chess::Bitboard, chess::Bitboard, chess::Bitboard) [29] __gmon_start__
+   [5] eval(chess::Board&, int, int, std::unordered_map<unsigned long, chess::Move, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, chess::Move> > >&, std::unordered_map<unsigned long, std::pair<bool, bool>, std::hash<unsigned long>, std::equal_to<unsigned long>, std::allocator<std::pair<unsigned long const, std::pair<bool, bool> > > >&, int, int) [53] chess::Bitboard chess::movegen::generateCastleMoves<(chess::Color::underlying)0>(chess::Board const&, chess::Square, chess::Bitboard, chess::Bitboard) [21] _dl_relocate_static_pie
+  [48] chess::uci::uciToMove(chess::Board const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [51] chess::movegen::init_squares_between() [26] _fini
+  [49] chess::Board::placePiece(chess::Piece, chess::Square) [15] std::pair<chess::Bitboard, int> chess::movegen::checkMask<(chess::Color::underlying)0>(chess::Board const&, chess::Square) [18] _init
+  [20] chess::Board::unmakeMove(chess::Move) [47] chess::PieceType::PieceType(std::basic_string_view<char, std::char_traits<char> >) [31] deregister_tm_clones
+  [50] chess::Board::removePiece(chess::Piece, chess::Square) [17] chess::Board::isAttacked(chess::Square, chess::Color) const [4] etext
+  [16] chess::Board::makeNullMove() [22] chess::Board::isInsufficientMaterial() const [8] frame_dummy
+  [19] bool chess::Board::setFenInternal<false>(std::basic_string_view<char, std::char_traits<char> >) [33] chess::Board::kingSq(chess::Color) const [3] main
+  [24] bool chess::Board::setFenInternal<true>(std::basic_string_view<char, std::char_traits<char> >) [32] chess::Board::zobrist() const
+  [36] chess::Board::setFen(std::basic_string_view<char, std::char_traits<char> >) [11] std::_Hashtable<unsigned long, std::pair<unsigned long const, chess::Move>, std::allocator<std::pair<unsigned long const, chess::Move> >, std::__detail::_Select1st, std::equal_to<unsigned long>, std::hash<unsigned long>, std::__detail::_Mod_range_hashing, std::__detail::_Default_ranged_hash, std::__detail::_Prime_rehash_policy, std::__detail::_Hashtable_traits<false, false, true> >::_M_insert_unique_node(unsigned long, unsigned long, std::__detail::_Hash_node<std::pair<unsigned long const, chess::Move>, false>*, unsigned long)
